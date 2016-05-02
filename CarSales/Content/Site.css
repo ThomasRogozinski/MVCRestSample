@@ -1,0 +1,66 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.float-right {
+    float: right;
+    width: 80%;
+}
+
+.float-left, .float-right {
+    display: inline-block;
+}
+
+.cars-table {
+    width: 50%;
+    border: 1px solid #999;
+}
+
+.cars-table tr {
+    border-bottom: 1px solid #999;
+}
+
+.cars-table tr td:first-child, .cars-table tr th:first-child {
+    width: 10%;
+}
+
+.cars-table tr td, .cars-table tr th {
+    width: 23%;
+}
+.details-table {
+    width: 70%;
+    border: 0px;
+}
+
+.details-table tr {
+    border-bottom: 0px;
+}
+
+.details-table tr td:first-child, .details-table tr th:first-child {
+    width: 10%;
+}
+
+.details-table tr td, .details-table tr th {
+    width: 70%;
+}

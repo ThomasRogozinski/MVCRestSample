@@ -1,0 +1,31 @@
+﻿@model IEnumerable<CarSales.Models.Car>
+
+@{
+    ViewBag.Title = "All Cars";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>List of all cars currently stored in a cache</h3>
+<p>Click Details to see car details. </p>
+
+<table class="cars-table">
+    <tr>
+        <th>Id</th>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Action</th>
+    </tr>
+
+    @if(Model != null && Model.Count() > 0) {
+        foreach (var car in Model) {
+            <tr>
+                <td>@car.Id</td>
+                <td>@car.Make</td>
+                <td>@car.Model</td>
+                <td>
+                    <a href="~/Car/Details/@car.Id">Details</a>
+                </td>
+            </tr> 
+        }
+    }
+</table>

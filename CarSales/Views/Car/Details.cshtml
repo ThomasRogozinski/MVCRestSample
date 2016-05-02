@@ -1,0 +1,84 @@
+﻿@model CarSales.Models.Car
+
+@{
+    ViewBag.Title = "Show Car Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+  
+<div>
+    <h3>Selected Car:</h3>
+</div>
+
+<table class="details-table">
+    <tr>
+        <td>Make:</td>
+        <td>@Model.Make</td>
+    </tr>
+    <tr>
+        <td>Model:</td>
+        <td>@Model.Model</td>
+    </tr>
+    <tr>
+        <td>Year:</td>
+        <td>@Model.Year</td>
+    </tr>
+    <tr>
+        <td>Price:</td>
+        <td>
+        @if (Model.PriceType == CarSales.Models.Car.CarPriceType.DAP) {
+            @(String.Format("{0:C0} DAP", Model.Price))
+        } else if (Model.PriceType == CarSales.Models.Car.CarPriceType.EGC) {
+            @(String.Format("{0:C0} EGC", Model.Price))
+        } else if (Model.PriceType == CarSales.Models.Car.CarPriceType.POA) {
+            @(String.Format("POA"))
+        }
+        </td>
+    </tr>
+</table>
+<br />
+Owner Details:
+<table class="details-table">
+    <tr>
+        <td>Email:</td>
+        <td>@Model.Owner.Email</td>
+    </tr>
+    @if (Model.Owner is CarSales.Models.Car.PrivateOwner) {
+        <tr>
+            <td>Name:</td>
+            <td>@(((CarSales.Models.Car.PrivateOwner)Model.Owner).ContactName)</td>
+        </tr>
+        <tr>
+            <td>Phone:</td>
+            <td>@(((CarSales.Models.Car.PrivateOwner)Model.Owner).Phone)</td>
+        </tr>
+    }
+    @if (Model.Owner is CarSales.Models.Car.Dealer) {
+        <tr>
+            <td>ABN:</td>
+            <td>@(((CarSales.Models.Car.Dealer)Model.Owner).ABN)</td>
+        </tr>
+    }
+    <tr>
+        <td>Comments:</td>
+        <td>@Model.Owner.Comments</td>
+    </tr>
+</table>
+
+<div>
+    <form method="post" style="margin: 5% 0 0">
+        <div>
+            <p style="color:red;">
+                @if (ViewBag.Message != null) {
+                    @ViewBag.Message
+                }<br />
+            </p>
+            <h4>To Enquire fill in the following form:</h4>
+
+            Name:<br />
+            <input type="text" style="margin: 1px 0 2px" name="name" value="" /><br />
+            Email:<br />
+            <input type="text" style="margin: 1px 0 2px" name="email" value="" /><br />
+            <input type="submit" value="Enquire" />
+        </div>
+    </form>
+</div>
